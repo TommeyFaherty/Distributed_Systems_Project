@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class ProjectClient {
 	private static final Logger logger = Logger.getLogger(ProjectClient.class.getName());
 	private final ManagedChannel channel;
-	private final GreeterGrpc.GreeterBlockingStub greeterClientStub;
+	private final PasswordGrpc.PasswordBlockingStub passwordClientStub;
 	
 	/** Construct client for accessing server using the existing channel. */
     public ProjectClient(String host, int port) {
@@ -21,7 +21,7 @@ public class ProjectClient {
                 // needing certificates.
                 .usePlaintext()
                 .build();
-        greeterClientStub = GreeterGrpc.newBlockingStub(channel);
+        passwordClientStub = PasswordGrpc.newBlockingStub(channel);
     }
     
     public void shutdown() throws InterruptedException {
@@ -34,7 +34,7 @@ public class ProjectClient {
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
         HelloReply response;
         try {
-            response = greeterClientStub.sayHello(request);
+            response = passwordClientStub.sayHello(request);
         } catch (StatusRuntimeException e) {
             logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
             return;
@@ -43,7 +43,16 @@ public class ProjectClient {
     }
     
     public void hash(String password) {
-    	logger.info("Hashing...");
+    	logger.info("Hashing..." + password);
+    	PassRequest request = PassRequest.newBuilder().setName(password).build();
+        PassReply response;
+        try {
+            response = passwordClientStub.hashPassword(request);
+        } catch (StatusRuntimeException e) {
+            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+            return;
+        }
+        logger.info("Hashed: " + response.getMessage());
     }
     
     public static void main(String[] args) throws Exception {

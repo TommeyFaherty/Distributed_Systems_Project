@@ -4,22 +4,18 @@ option java_multiple_files = true;
 option java_package = "ie.gmit.ds";
 option java_outer_classname = "ProjectProto";
 
-// The greeting service definition.
-service Greeter {
-  // Sends a greeting
+service Password {
 	rpc SayHello (HelloRequest) returns (HelloReply) {}
-	rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+	rpc RetrieveName (UsernameRequest) returns (UsernameReply);
+	rpc HashPassword (PassRequest) returns (PassReply);
 }
 
-// The hash service definition
-service Hash {
-	rpc hashPassword (HelloRequest) returns (HelloReply) {}
-	
+message UsernameRequest {
+	string name = 1;
 }
 
-// The validate service definition
-service Validate {
-
+message UsernameReply {
+	string message = 1;
 }
 
 // The request message containing the user's name.
@@ -29,5 +25,13 @@ message HelloRequest {
 
 // The response message containing the greetings
 message HelloReply {
+  	string message = 1;
+}
+
+message PassRequest {
+  	string name = 1;
+}
+
+message PassReply {
   	string message = 1;
 }

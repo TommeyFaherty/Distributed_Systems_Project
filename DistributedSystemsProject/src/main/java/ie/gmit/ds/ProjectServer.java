@@ -7,6 +7,8 @@ import io.grpc.stub.StreamObserver;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import ie.gmit.ds.PasswordStorage.CannotPerformOperationException;
+
 public class ProjectServer {
 	
 	private Server server;
@@ -22,7 +24,7 @@ public class ProjectServer {
         /* The port on which the server should run */
         int port = 50051;
         server = ServerBuilder.forPort(port)
-                .addService(new ProjectServer.GreeterImpl())
+                .addService(new ProjectServer.PasswordImpl())
                 .build()
                 .start();
         logger.info("Server started, listening on " + port);
@@ -43,12 +45,31 @@ public class ProjectServer {
         }
     }
     
-    static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
+    static class PasswordImpl extends PasswordGrpc.PasswordImplBase {
     	@Override
     	public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
     		HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
     		responseObserver.onNext(reply);
     		responseObserver.onCompleted();
+    	}
+    	
+    	@Override
+    	public void hashPassword(PassRequest req, StreamObserver<PassReply> responseObserver) {		
+    		
+    		PasswordStorage ps = new PasswordStorage();
+    		try {
+				String hashedPass = ps.createHash(req.toString());
+				
+				PassReply reply = PassReply.newBuilder().setMessage("hashed: "+ hashedPass +" || " + req.getName()).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+				
+			} catch (CannotPerformOperationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    		
     	}
     }
 }
