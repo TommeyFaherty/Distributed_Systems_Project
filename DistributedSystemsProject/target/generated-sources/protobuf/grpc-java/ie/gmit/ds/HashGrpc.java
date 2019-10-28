@@ -30,6 +30,37 @@ public final class HashGrpc {
   public static final String SERVICE_NAME = "Hash";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<ie.gmit.ds.HelloRequest,
+      ie.gmit.ds.HelloReply> getHashPasswordMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "hashPassword",
+      requestType = ie.gmit.ds.HelloRequest.class,
+      responseType = ie.gmit.ds.HelloReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ie.gmit.ds.HelloRequest,
+      ie.gmit.ds.HelloReply> getHashPasswordMethod() {
+    io.grpc.MethodDescriptor<ie.gmit.ds.HelloRequest, ie.gmit.ds.HelloReply> getHashPasswordMethod;
+    if ((getHashPasswordMethod = HashGrpc.getHashPasswordMethod) == null) {
+      synchronized (HashGrpc.class) {
+        if ((getHashPasswordMethod = HashGrpc.getHashPasswordMethod) == null) {
+          HashGrpc.getHashPasswordMethod = getHashPasswordMethod =
+              io.grpc.MethodDescriptor.<ie.gmit.ds.HelloRequest, ie.gmit.ds.HelloReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hashPassword"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ie.gmit.ds.HelloRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ie.gmit.ds.HelloReply.getDefaultInstance()))
+              .setSchemaDescriptor(new HashMethodDescriptorSupplier("hashPassword"))
+              .build();
+        }
+      }
+    }
+    return getHashPasswordMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -60,8 +91,22 @@ public final class HashGrpc {
    */
   public static abstract class HashImplBase implements io.grpc.BindableService {
 
+    /**
+     */
+    public void hashPassword(ie.gmit.ds.HelloRequest request,
+        io.grpc.stub.StreamObserver<ie.gmit.ds.HelloReply> responseObserver) {
+      asyncUnimplementedUnaryCall(getHashPasswordMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getHashPasswordMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                ie.gmit.ds.HelloRequest,
+                ie.gmit.ds.HelloReply>(
+                  this, METHODID_HASH_PASSWORD)))
           .build();
     }
   }
@@ -86,6 +131,14 @@ public final class HashGrpc {
         io.grpc.CallOptions callOptions) {
       return new HashStub(channel, callOptions);
     }
+
+    /**
+     */
+    public void hashPassword(ie.gmit.ds.HelloRequest request,
+        io.grpc.stub.StreamObserver<ie.gmit.ds.HelloReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getHashPasswordMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -107,6 +160,13 @@ public final class HashGrpc {
     protected HashBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new HashBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public ie.gmit.ds.HelloReply hashPassword(ie.gmit.ds.HelloRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getHashPasswordMethod(), getCallOptions(), request);
     }
   }
 
@@ -130,8 +190,17 @@ public final class HashGrpc {
         io.grpc.CallOptions callOptions) {
       return new HashFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ie.gmit.ds.HelloReply> hashPassword(
+        ie.gmit.ds.HelloRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getHashPasswordMethod(), getCallOptions()), request);
+    }
   }
 
+  private static final int METHODID_HASH_PASSWORD = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -150,6 +219,10 @@ public final class HashGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_HASH_PASSWORD:
+          serviceImpl.hashPassword((ie.gmit.ds.HelloRequest) request,
+              (io.grpc.stub.StreamObserver<ie.gmit.ds.HelloReply>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -211,6 +284,7 @@ public final class HashGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HashFileDescriptorSupplier())
+              .addMethod(getHashPasswordMethod())
               .build();
         }
       }

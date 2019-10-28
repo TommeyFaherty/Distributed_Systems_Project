@@ -37,8 +37,9 @@ public final class ProjectProto {
       "\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2b\n\007" +
       "Greeter\022(\n\010SayHello\022\r.HelloRequest\032\013.Hel" +
       "loReply\"\000\022-\n\rSayHelloAgain\022\r.HelloReques" +
-      "t\032\013.HelloReply\"\0002\006\n\004Hash2\n\n\010ValidateB\034\n\n" +
-      "ie.gmit.dsB\014ProjectProtoP\001b\006proto3"
+      "t\032\013.HelloReply\"\00024\n\004Hash\022,\n\014hashPassword" +
+      "\022\r.HelloRequest\032\013.HelloReply\"\0002\n\n\010Valida" +
+      "teB\034\n\nie.gmit.dsB\014ProjectProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

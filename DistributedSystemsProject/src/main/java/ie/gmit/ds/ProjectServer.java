@@ -12,20 +12,20 @@ public class ProjectServer {
 	private Server server;
     private static final Logger logger = Logger.getLogger(ProjectServer.class.getName());
 
-	private static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		final ProjectServer server = new ProjectServer();
 		server.start();
 		server.blockUntilShutdown();
 	}
 	
 	private void start() throws IOException {
-		/**/
-		int port = 50051;
-		server = ServerBuilder.forPort(port)
-				.addService(new ProjectServer.GreeterImpl())
-				.build()
-				.start();
-		logger.info("Server started, listening on " + port);
+        /* The port on which the server should run */
+        int port = 50051;
+        server = ServerBuilder.forPort(port)
+                .addService(new ProjectServer.GreeterImpl())
+                .build()
+                .start();
+        logger.info("Server started, listening on " + port);
 	}
 	
 	private void stop() {

@@ -4,6 +4,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +42,30 @@ public class ProjectClient {
         logger.info("Greeting: " + response.getMessage());
     }
     
+    public void hash(String password) {
+    	logger.info("Hashing...");
+    }
+    
+    public static void main(String[] args) throws Exception {
+        
+    	Scanner console = new Scanner(System.in);
+    	
+    	ProjectClient client = new ProjectClient("localhost", 50051);
+        try {
+        	
+        	//Get username
+            System.out.println("Enter username:");
+            String username = console.nextLine();
+            client.greet(username);
+            
+            //Get password
+            System.out.println("Enter password:");
+            String password = console.nextLine();
+            client.hash(password);
+;        } finally {
+            client.shutdown();
+        }
+    }
     
 	
 }
