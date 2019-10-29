@@ -3,8 +3,8 @@
 
 package ie.gmit.ds;
 
-public interface PassReplyOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:PassReply)
+public interface HashReplyOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:HashReply)
     com.google.protobuf.MessageOrBuilder {
 
   /**

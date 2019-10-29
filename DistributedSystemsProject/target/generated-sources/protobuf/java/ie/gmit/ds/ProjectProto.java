@@ -15,35 +15,25 @@ public final class ProjectProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UsernameRequest_descriptor;
+    internal_static_HashRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UsernameRequest_fieldAccessorTable;
+      internal_static_HashRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UsernameReply_descriptor;
+    internal_static_HashReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UsernameReply_fieldAccessorTable;
+      internal_static_HashReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HelloRequest_descriptor;
+    internal_static_ValidateRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HelloRequest_fieldAccessorTable;
+      internal_static_ValidateRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HelloReply_descriptor;
+    internal_static_ValidateReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HelloReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PassRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PassRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PassReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PassReply_fieldAccessorTable;
+      internal_static_ValidateReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -53,56 +43,43 @@ public final class ProjectProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rProject.proto\"\037\n\017UsernameRequest\022\014\n\004na" +
-      "me\030\001 \001(\t\" \n\rUsernameReply\022\017\n\007message\030\001 \001" +
-      "(\t\"\034\n\014HelloRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHell" +
-      "oReply\022\017\n\007message\030\001 \001(\t\"\033\n\013PassRequest\022\014" +
-      "\n\004name\030\001 \001(\t\"\034\n\tPassReply\022\017\n\007message\030\001 \001" +
-      "(\t2\220\001\n\010Password\022(\n\010SayHello\022\r.HelloReque" +
-      "st\032\013.HelloReply\"\000\0220\n\014RetrieveName\022\020.User" +
-      "nameRequest\032\016.UsernameReply\022(\n\014HashPassw" +
-      "ord\022\014.PassRequest\032\n.PassReplyB\034\n\nie.gmit" +
-      ".dsB\014ProjectProtoP\001b\006proto3"
+      "\n\rProject.proto\"-\n\013HashRequest\022\014\n\004name\030\001" +
+      " \001(\005\022\020\n\010password\030\002 \001(\t\"\034\n\tHashReply\022\017\n\007m" +
+      "essage\030\001 \001(\t\"E\n\017ValidateRequest\022\020\n\010passw" +
+      "ord\030\001 \001(\t\022\022\n\nhashedPass\030\002 \001(\t\022\014\n\004salt\030\003 " +
+      "\001(\t\" \n\rValidateReply\022\017\n\007message\030\001 \001(\t2b\n" +
+      "\010Password\022(\n\014HashPassword\022\014.HashRequest\032" +
+      "\n.HashReply\022,\n\010Validate\022\020.ValidateReques" +
+      "t\032\016.ValidateReplyB\034\n\nie.gmit.dsB\014Project" +
+      "ProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_UsernameRequest_descriptor =
+    internal_static_HashRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_UsernameRequest_fieldAccessorTable = new
+    internal_static_HashRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UsernameRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_UsernameReply_descriptor =
+        internal_static_HashRequest_descriptor,
+        new java.lang.String[] { "Name", "Password", });
+    internal_static_HashReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_UsernameReply_fieldAccessorTable = new
+    internal_static_HashReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UsernameReply_descriptor,
+        internal_static_HashReply_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_HelloRequest_descriptor =
+    internal_static_ValidateRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_HelloRequest_fieldAccessorTable = new
+    internal_static_ValidateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HelloRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_HelloReply_descriptor =
+        internal_static_ValidateRequest_descriptor,
+        new java.lang.String[] { "Password", "HashedPass", "Salt", });
+    internal_static_ValidateReply_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_HelloReply_fieldAccessorTable = new
+    internal_static_ValidateReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HelloReply_descriptor,
-        new java.lang.String[] { "Message", });
-    internal_static_PassRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_PassRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PassRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_PassReply_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_PassReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PassReply_descriptor,
+        internal_static_ValidateReply_descriptor,
         new java.lang.String[] { "Message", });
   }
 

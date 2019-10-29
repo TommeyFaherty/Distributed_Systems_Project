@@ -3,8 +3,8 @@
 
 package ie.gmit.ds;
 
-public interface HelloReplyOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:HelloReply)
+public interface ValidateReplyOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ValidateReply)
     com.google.protobuf.MessageOrBuilder {
 
   /**

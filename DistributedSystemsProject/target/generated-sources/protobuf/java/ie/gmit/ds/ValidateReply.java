@@ -4,18 +4,18 @@
 package ie.gmit.ds;
 
 /**
- * Protobuf type {@code PassReply}
+ * Protobuf type {@code ValidateReply}
  */
-public  final class PassReply extends
+public  final class ValidateReply extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:PassReply)
-    PassReplyOrBuilder {
+    // @@protoc_insertion_point(message_implements:ValidateReply)
+    ValidateReplyOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PassReply.newBuilder() to construct.
-  private PassReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ValidateReply.newBuilder() to construct.
+  private ValidateReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PassReply() {
+  private ValidateReply() {
     message_ = "";
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PassReply();
+    return new ValidateReply();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private PassReply(
+  private ValidateReply(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -76,15 +76,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ie.gmit.ds.ProjectProto.internal_static_PassReply_descriptor;
+    return ie.gmit.ds.ProjectProto.internal_static_ValidateReply_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ie.gmit.ds.ProjectProto.internal_static_PassReply_fieldAccessorTable
+    return ie.gmit.ds.ProjectProto.internal_static_ValidateReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ie.gmit.ds.PassReply.class, ie.gmit.ds.PassReply.Builder.class);
+            ie.gmit.ds.ValidateReply.class, ie.gmit.ds.ValidateReply.Builder.class);
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 1;
@@ -160,10 +160,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ie.gmit.ds.PassReply)) {
+    if (!(obj instanceof ie.gmit.ds.ValidateReply)) {
       return super.equals(obj);
     }
-    ie.gmit.ds.PassReply other = (ie.gmit.ds.PassReply) obj;
+    ie.gmit.ds.ValidateReply other = (ie.gmit.ds.ValidateReply) obj;
 
     if (!getMessage()
         .equals(other.getMessage())) return false;
@@ -185,69 +185,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.PassReply parseFrom(byte[] data)
+  public static ie.gmit.ds.ValidateReply parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.PassReply parseFrom(java.io.InputStream input)
+  public static ie.gmit.ds.ValidateReply parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ie.gmit.ds.PassReply parseDelimitedFrom(java.io.InputStream input)
+  public static ie.gmit.ds.ValidateReply parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.PassReply parseDelimitedFrom(
+  public static ie.gmit.ds.ValidateReply parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.PassReply parseFrom(
+  public static ie.gmit.ds.ValidateReply parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -260,7 +260,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ie.gmit.ds.PassReply prototype) {
+  public static Builder newBuilder(ie.gmit.ds.ValidateReply prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -276,26 +276,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code PassReply}
+   * Protobuf type {@code ValidateReply}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:PassReply)
-      ie.gmit.ds.PassReplyOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ValidateReply)
+      ie.gmit.ds.ValidateReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ie.gmit.ds.ProjectProto.internal_static_PassReply_descriptor;
+      return ie.gmit.ds.ProjectProto.internal_static_ValidateReply_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ie.gmit.ds.ProjectProto.internal_static_PassReply_fieldAccessorTable
+      return ie.gmit.ds.ProjectProto.internal_static_ValidateReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ie.gmit.ds.PassReply.class, ie.gmit.ds.PassReply.Builder.class);
+              ie.gmit.ds.ValidateReply.class, ie.gmit.ds.ValidateReply.Builder.class);
     }
 
-    // Construct using ie.gmit.ds.PassReply.newBuilder()
+    // Construct using ie.gmit.ds.ValidateReply.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -321,17 +321,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ie.gmit.ds.ProjectProto.internal_static_PassReply_descriptor;
+      return ie.gmit.ds.ProjectProto.internal_static_ValidateReply_descriptor;
     }
 
     @java.lang.Override
-    public ie.gmit.ds.PassReply getDefaultInstanceForType() {
-      return ie.gmit.ds.PassReply.getDefaultInstance();
+    public ie.gmit.ds.ValidateReply getDefaultInstanceForType() {
+      return ie.gmit.ds.ValidateReply.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ie.gmit.ds.PassReply build() {
-      ie.gmit.ds.PassReply result = buildPartial();
+    public ie.gmit.ds.ValidateReply build() {
+      ie.gmit.ds.ValidateReply result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -339,8 +339,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ie.gmit.ds.PassReply buildPartial() {
-      ie.gmit.ds.PassReply result = new ie.gmit.ds.PassReply(this);
+    public ie.gmit.ds.ValidateReply buildPartial() {
+      ie.gmit.ds.ValidateReply result = new ie.gmit.ds.ValidateReply(this);
       result.message_ = message_;
       onBuilt();
       return result;
@@ -380,16 +380,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ie.gmit.ds.PassReply) {
-        return mergeFrom((ie.gmit.ds.PassReply)other);
+      if (other instanceof ie.gmit.ds.ValidateReply) {
+        return mergeFrom((ie.gmit.ds.ValidateReply)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ie.gmit.ds.PassReply other) {
-      if (other == ie.gmit.ds.PassReply.getDefaultInstance()) return this;
+    public Builder mergeFrom(ie.gmit.ds.ValidateReply other) {
+      if (other == ie.gmit.ds.ValidateReply.getDefaultInstance()) return this;
       if (!other.getMessage().isEmpty()) {
         message_ = other.message_;
         onChanged();
@@ -409,11 +409,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ie.gmit.ds.PassReply parsedMessage = null;
+      ie.gmit.ds.ValidateReply parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ie.gmit.ds.PassReply) e.getUnfinishedMessage();
+        parsedMessage = (ie.gmit.ds.ValidateReply) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -504,41 +504,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:PassReply)
+    // @@protoc_insertion_point(builder_scope:ValidateReply)
   }
 
-  // @@protoc_insertion_point(class_scope:PassReply)
-  private static final ie.gmit.ds.PassReply DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ValidateReply)
+  private static final ie.gmit.ds.ValidateReply DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ie.gmit.ds.PassReply();
+    DEFAULT_INSTANCE = new ie.gmit.ds.ValidateReply();
   }
 
-  public static ie.gmit.ds.PassReply getDefaultInstance() {
+  public static ie.gmit.ds.ValidateReply getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PassReply>
-      PARSER = new com.google.protobuf.AbstractParser<PassReply>() {
+  private static final com.google.protobuf.Parser<ValidateReply>
+      PARSER = new com.google.protobuf.AbstractParser<ValidateReply>() {
     @java.lang.Override
-    public PassReply parsePartialFrom(
+    public ValidateReply parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PassReply(input, extensionRegistry);
+      return new ValidateReply(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<PassReply> parser() {
+  public static com.google.protobuf.Parser<ValidateReply> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PassReply> getParserForType() {
+  public com.google.protobuf.Parser<ValidateReply> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ie.gmit.ds.PassReply getDefaultInstanceForType() {
+  public ie.gmit.ds.ValidateReply getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -5,33 +5,25 @@ option java_package = "ie.gmit.ds";
 option java_outer_classname = "ProjectProto";
 
 service Password {
-	rpc SayHello (HelloRequest) returns (HelloReply) {}
-	rpc RetrieveName (UsernameRequest) returns (UsernameReply);
-	rpc HashPassword (PassRequest) returns (PassReply);
+	rpc HashPassword (HashRequest) returns (HashReply);
+	rpc Validate (ValidateRequest) returns (ValidateReply);
 }
 
-message UsernameRequest {
-	string name = 1;
+message HashRequest {
+	int32 name = 1;
+	string password = 2;
 }
 
-message UsernameReply {
+message HashReply {
 	string message = 1;
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  	string name = 1;
+message ValidateRequest {
+	string password = 1;
+	string hashedPass = 2;
+	string salt = 3;
 }
 
-// The response message containing the greetings
-message HelloReply {
-  	string message = 1;
-}
-
-message PassRequest {
-  	string name = 1;
-}
-
-message PassReply {
-  	string message = 1;
+message ValidateReply {
+	string message = 1;
 }

@@ -28,24 +28,10 @@ public class ProjectClient {
     	channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
     
-    /** Say hello to server. */
-    public void greet(String name) {
-        logger.info("Will try to greet " + name + " ...");
-        HelloRequest request = HelloRequest.newBuilder().setName(name).build();
-        HelloReply response;
-        try {
-            response = passwordClientStub.sayHello(request);
-        } catch (StatusRuntimeException e) {
-            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-            return;
-        }
-        logger.info("Greeting: " + response.getMessage());
-    }
-    
-    public void hash(String password) {
+    public void hash(int id, String password) {
     	logger.info("Hashing..." + password);
-    	PassRequest request = PassRequest.newBuilder().setName(password).build();
-        PassReply response;
+    	HashRequest request = HashRequest.newBuilder().setName(id).setPassword(password).build();
+        HashReply response;
         try {
             response = passwordClientStub.hashPassword(request);
         } catch (StatusRuntimeException e) {
@@ -62,15 +48,15 @@ public class ProjectClient {
     	ProjectClient client = new ProjectClient("localhost", 50051);
         try {
         	
-        	//Get username
-            System.out.println("Enter username:");
-            String username = console.nextLine();
-            client.greet(username);
+        	//Get username id
+            System.out.println("Enter username ID:");
+            int id = console.nextInt();
             
             //Get password
             System.out.println("Enter password:");
             String password = console.nextLine();
-            client.hash(password);
+            password = console.nextLine();
+            client.hash(id, password);
 ;        } finally {
             client.shutdown();
         }
