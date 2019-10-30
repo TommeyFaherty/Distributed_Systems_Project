@@ -30,7 +30,10 @@ public class ProjectClient {
     
     public void hash(int id, String password) {
     	logger.info("Hashing..." + password);
-    	HashRequest request = HashRequest.newBuilder().setName(id).setPassword(password).build();
+    	HashRequest request = HashRequest.newBuilder()
+    			.setName(id)
+    			.setPassword(password)
+    			.build();
         HashReply response;
         try {
             response = passwordClientStub.hashPassword(request);
@@ -39,6 +42,27 @@ public class ProjectClient {
             return;
         }
         logger.info("Hashed: " + response.getMessage());
+//        String tempPass = response.getMessage();
+//        String[] tempPassArray = tempPass.split(":");
+        
+    }
+    
+    
+    public void validate(String password, String hashedPass, String salt) {
+    	logger.info("Validating ...");
+    	ValidateRequest request = ValidateRequest.newBuilder()
+    			.setPassword(password)
+    			.setHashedPass(hashedPass)
+    			.setSalt(salt)
+    			.build();
+    	ValidateReply response;
+    	try {
+    		response = passwordClientStub.validate(request);
+    	}catch (StatusRuntimeException e) {
+    		logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+            return;
+    	}
+    	logger.info("Validity: "+ response.getMessage());
     }
     
     public static void main(String[] args) throws Exception {
@@ -57,7 +81,12 @@ public class ProjectClient {
             String password = console.nextLine();
             password = console.nextLine();
             client.hash(id, password);
-;        } finally {
+            
+            String hashedPass = "[B@7d29c560";
+            String salt = "[B@1dd14335";
+            client.validate(password, hashedPass, salt);
+            
+        } finally {
             client.shutdown();
         }
     }

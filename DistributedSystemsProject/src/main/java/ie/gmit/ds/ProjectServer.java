@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
 
-import ie.gmit.ds.PasswordStorage.CannotPerformOperationException;
-
 public class ProjectServer {
 	
 	private Server server;
@@ -60,35 +58,32 @@ public class ProjectServer {
     	@Override
     	public void hashPassword(HashRequest req, StreamObserver<HashReply> responseObserver) {		
     			
-    		PasswordStorage ps = new PasswordStorage();
-    		try {
-    			String password = req.getPassword();
-    			int id =req.getName();
-    			
-				String hashedPass = ps.createHash(password);
-				
-				HashReply reply = HashReply.newBuilder().setMessage(hashedPass).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
-				
-				try {
-					SavePassword(id, hashedPass);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} catch (CannotPerformOperationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 		
+    		Passwords ps = new Passwords();
+    		byte[] salt = ps.getNextSalt();
+			char[] password = (req.getPassword()).toCharArray();
+			
+			byte[] hashedPass = ps.hash(password,salt);
+			
+			HashReply reply = HashReply.newBuilder().setMessage(req.getName()+":"+hashedPass+":"+salt).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted(); 		
     	}
     	
-//    	@Override
-//    	public void validate(IdRequest req, StreamObserver<IdReply> responseObserver) {
-//    		IdReply reply = IdReply.newBuilder().setMessage("Hello " + req.getName()).build();
-//    		responseObserver.onNext(reply);
-//    		responseObserver.onCompleted();
-//    	}
+    	@Override
+    	public void validate(ValidateRequest req, StreamObserver<ValidateReply> responseObserver) {
+    		
+    		Passwords ps = new Passwords();
+    		
+    		char[] password = req.getPassword().toCharArray();
+    		byte[] expectedHash = req.getHashedPass().getBytes();
+    		byte[] salt = req.getSalt().getBytes();
+    		
+    		boolean checker = ps.isExpectedPassword(password, salt, expectedHash);
+			ValidateReply reply = ValidateReply.newBuilder().setMessage("is... "+checker).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+    		
+    		
+    	}
     }
 }
