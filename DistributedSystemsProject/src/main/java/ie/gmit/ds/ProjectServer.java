@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -47,20 +48,14 @@ public class ProjectServer {
             server.awaitTermination();
         }
     }
-       
-    private static void SavePassword(int username, String hashedPassword) 
-    		  throws IOException {
-    		    FileWriter fileWriter = new FileWriter("hashedPasswords.txt");
-    		    PrintWriter printWriter = new PrintWriter(fileWriter);
-    		    printWriter.print(username);
-    		    printWriter.printf("%d %s", username, hashedPassword);
-    		    printWriter.close();
-    		}
     
     static class PasswordImpl extends PasswordGrpc.PasswordImplBase {
+    	
+    	Passwords ps = new Passwords();
+    	
     	@Override
     	public void hashPassword(HashRequest req, StreamObserver<HashReply> responseObserver) {		
-    		Passwords ps = new Passwords();
+    		//Passwords ps = new Passwords();
     		byte[] salt = ps.getNextSalt();
 			char[] password = (req.getPassword()).toCharArray();
 			
@@ -74,18 +69,15 @@ public class ProjectServer {
     	@Override
     	public void validate(ValidateRequest req, StreamObserver<ValidateReply> responseObserver) {
     		
-    		Passwords ps = new Passwords();
-    		
-    		char[] password = req.getPassword().toCharArray();
-    		byte[] expectedHash = req.getHashedPass().getBytes();
-    		byte[] salt = req.getSalt().getBytes();
+    		char[] password = (req.getPassword()).toCharArray();
+    		byte[] expectedHash = (req.getHashedPass()).getBytes();
+    		byte[] salt = (req.getSalt()).getBytes();
     		
     		boolean checker = ps.isExpectedPassword(password, salt, expectedHash);
 			ValidateReply reply = ValidateReply.newBuilder().setMessage("is... "+checker).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
-    		
-    		
+    	
     	}
     }
 }

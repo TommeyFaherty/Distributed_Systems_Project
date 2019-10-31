@@ -70,7 +70,6 @@ public class Passwords {
      */
     public boolean isExpectedPassword(char[] password, byte[] salt, byte[] expectedHash) {
     	byte[] pwdHash = hash(password, salt);
-      
         return Arrays.equals(pwdHash, expectedHash);
     }
 
