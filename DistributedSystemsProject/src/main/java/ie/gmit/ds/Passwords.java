@@ -2,11 +2,14 @@ package ie.gmit.ds;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * A utility class to hash passwords and check passwords vs hashed values. It uses a combination of hashing and unique
@@ -45,7 +48,7 @@ public class Passwords {
      * @param salt     a 16 bytes salt, ideally obtained with the getNextSalt method
      * @return the hashed password with a pinch of salt
      */
-    public static byte[] hash(char[] password, byte[] salt) {
+    public byte[] hash(char[] password, byte[] salt) {
         PBEKeySpec spec = new PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH);
         try {
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
@@ -65,8 +68,9 @@ public class Passwords {
      * @param expectedHash the expected hashed value of the password
      * @return true if the given password and salt match the hashed value, false otherwise
      */
-    public static boolean isExpectedPassword(char[] password, byte[] salt, byte[] expectedHash) {
-        byte[] pwdHash = hash(password, salt);
+    public boolean isExpectedPassword(char[] password, byte[] salt, byte[] expectedHash) {
+    	byte[] pwdHash = hash(password, salt);
+      
         return Arrays.equals(pwdHash, expectedHash);
     }
 

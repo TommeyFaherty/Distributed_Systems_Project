@@ -82,8 +82,10 @@ public class ProjectClient {
             password = console.nextLine();
             client.hash(id, password);
             
-            String hashedPass = "[B@7d29c560";
-            String salt = "[B@1dd14335";
+            System.out.println("Enter hashed password:");
+            String hashedPass = console.nextLine();
+            System.out.println("Enter salt:");
+            String salt = console.nextLine();
             client.validate(password, hashedPass, salt);
             
         } finally {

@@ -4,15 +4,18 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ProjectServer {
 	
 	private Server server;
-    private static final Logger logger = Logger.getLogger(ProjectServer.class.getName());
+    private static final Logger logger = Logger.getLogger(ProjectServer.class.getName());  
     
 	public static void main(String[] args) throws IOException, InterruptedException {
 		final ProjectServer server = new ProjectServer();
@@ -57,7 +60,6 @@ public class ProjectServer {
     static class PasswordImpl extends PasswordGrpc.PasswordImplBase {
     	@Override
     	public void hashPassword(HashRequest req, StreamObserver<HashReply> responseObserver) {		
-    			
     		Passwords ps = new Passwords();
     		byte[] salt = ps.getNextSalt();
 			char[] password = (req.getPassword()).toCharArray();
@@ -66,7 +68,7 @@ public class ProjectServer {
 			
 			HashReply reply = HashReply.newBuilder().setMessage(req.getName()+":"+hashedPass+":"+salt).build();
 			responseObserver.onNext(reply);
-			responseObserver.onCompleted(); 		
+			responseObserver.onCompleted();
     	}
     	
     	@Override
