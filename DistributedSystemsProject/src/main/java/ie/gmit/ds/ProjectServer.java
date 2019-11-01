@@ -61,17 +61,20 @@ public class ProjectServer {
 			
 			byte[] hashedPass = ps.hash(password,salt);
 			
+			String str = new String (hashedPass);
+			
 			HashReply reply = HashReply.newBuilder().setMessage(req.getName()+":"+hashedPass+":"+salt).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
+			
     	}
     	
     	@Override
     	public void validate(ValidateRequest req, StreamObserver<ValidateReply> responseObserver) {
     		
     		char[] password = (req.getPassword()).toCharArray();
-    		byte[] expectedHash = (req.getHashedPass()).getBytes();
-    		byte[] salt = (req.getSalt()).getBytes();
+    		byte[] expectedHash = (req.getHashedPass()).toByteArray();
+    		byte[] salt = req.getSalt().toByteArray();
     		
     		boolean checker = ps.isExpectedPassword(password, salt, expectedHash);
 			ValidateReply reply = ValidateReply.newBuilder().setMessage("is... "+checker).build();

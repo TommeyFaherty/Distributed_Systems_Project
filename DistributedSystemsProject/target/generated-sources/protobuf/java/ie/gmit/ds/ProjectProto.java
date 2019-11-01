@@ -46,8 +46,8 @@ public final class ProjectProto {
       "\n\rProject.proto\"-\n\013HashRequest\022\014\n\004name\030\001" +
       " \001(\005\022\020\n\010password\030\002 \001(\t\"\034\n\tHashReply\022\017\n\007m" +
       "essage\030\001 \001(\t\"E\n\017ValidateRequest\022\020\n\010passw" +
-      "ord\030\001 \001(\t\022\022\n\nhashedPass\030\002 \001(\t\022\014\n\004salt\030\003 " +
-      "\001(\t\" \n\rValidateReply\022\017\n\007message\030\001 \001(\t2b\n" +
+      "ord\030\001 \001(\t\022\022\n\nhashedPass\030\002 \001(\014\022\014\n\004salt\030\003 " +
+      "\001(\014\" \n\rValidateReply\022\017\n\007message\030\001 \001(\t2b\n" +
       "\010Password\022(\n\014HashPassword\022\014.HashRequest\032" +
       "\n.HashReply\022,\n\010Validate\022\020.ValidateReques" +
       "t\032\016.ValidateReplyB\034\n\nie.gmit.dsB\014Project" +

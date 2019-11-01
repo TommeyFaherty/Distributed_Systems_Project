@@ -20,8 +20,8 @@ message HashReply {
 
 message ValidateRequest {
 	string password = 1;
-	string hashedPass = 2;
-	string salt = 3;
+	bytes hashedPass = 2;
+	bytes salt = 3;
 }
 
 message ValidateReply {
