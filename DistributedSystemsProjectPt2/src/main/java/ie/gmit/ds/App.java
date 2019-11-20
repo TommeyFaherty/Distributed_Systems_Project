@@ -11,16 +11,16 @@ import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class App extends Application<Configuration> {
+public class App extends Application<ApiConfig> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 	
 	@Override
-	public void initialize(Bootstrap<Configuration> b) {
+	public void initialize(Bootstrap<ApiConfig> b) {
 		
 	}
 	
 	@Override
-	public void run(Configuration c, Environment e) throws Exception {
+	public void run(ApiConfig c, Environment e) throws Exception {
 		LOGGER.info("Registering REST resources");
 		e.jersey().register(new UserRESTController(e.getValidator()));
 	}

@@ -12,7 +12,7 @@ public class User {
 	private Integer id;
 	@NotBlank @Length(min=2, max=255)
 	private String name;
-	@NotBlank @Length(min=2, max=255)
+	@Pattern(regexp=".+@.+\\.[a-z]+")
 	private String email;
 	@NotBlank @Length
 	private String hashedPassword;
