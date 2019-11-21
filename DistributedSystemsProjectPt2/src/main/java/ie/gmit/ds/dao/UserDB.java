@@ -3,16 +3,16 @@ package ie.gmit.ds.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
- 
-import ie.gmit.ds.representations.User; 
+
+import ie.gmit.ds.User; 
 
 public class UserDB {
 	
 	public static HashMap<Integer, User> users = new HashMap<>();
 	static {
 		users.put(1, new User(1, "Hillary", "Hillaryous@gmail.com", "hashhhhh", "sfsfs654"));
-		users.put(2, new User(4, "Jim", "Gym@gmail.com", "hashhthh", "sfyus654"));
-		users.put(3, new User(8, "Paul", "APaulLing@gmail.com", "hasoohhh", "sfpks654"));
+		users.put(4, new User(4, "Jim", "Gym@gmail.com", "hashhthh", "sfyus654"));
+		users.put(8, new User(8, "Paul", "APaulLing@gmail.com", "hasoohhh", "sfpks654"));
 	}
 	
 	public static List<User> getUsers() {

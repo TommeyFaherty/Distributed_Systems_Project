@@ -1,10 +1,12 @@
-package ie.gmit.ds.controller;
+package ie.gmit.ds;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
- 
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.ws.rs.DELETE;
@@ -17,26 +19,34 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
- 
+
 import ie.gmit.ds.dao.UserDB;
-import ie.gmit.ds.representations.User;
 
 
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserRESTController {
+public class ApiResource {
+	
+	//List<User> users = Arrays.asList(new User(1, "Hillary", "Hillaryous@gmail.com", "hashhhhh", "sfsfs654"));
 	
 	private final Validator validator;
 	
-	public UserRESTController(Validator validator) {
+	public ApiResource(Validator validator) {
 		this.validator = validator;
 	}
 	
+	//@GET
+	//public List<User> getUser() {
+	//	return users;
+	//}
+	
+	//Get list of users
 	@GET
-	public Response getEmployees() {
+	public Response getUsers() {
 		return Response.ok(UserDB.getUsers()).build();
 	}
 	
+	//Get info on specified user
 	@GET
 	@Path("/{id}")
 	public Response getUserById(@PathParam("id") Integer id) {
@@ -47,6 +57,7 @@ public class UserRESTController {
 			return Response.status(Status.NOT_FOUND).build();
 	}
 	
+	//Create a new user
 	@POST
 	public Response createUser(User user) throws URISyntaxException {
 		Set<ConstraintViolation<User>> violations = validator.validate(user);
@@ -66,6 +77,7 @@ public class UserRESTController {
 			return Response.status(Status.NOT_FOUND).build();
 	}
 	
+	//Update details on specified user
 	@PUT
 	@Path("/{id}")
 	public Response updateUserById(@PathParam("id") Integer id, User user) {
@@ -87,6 +99,7 @@ public class UserRESTController {
 			return Response.status(Status.NOT_FOUND).build();
 	}
 	
+	//Delete user from list
 	@DELETE
 	@Path("/{id}")
 	public Response removeUserById(@PathParam("id") Integer id) {

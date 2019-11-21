@@ -1,4 +1,4 @@
-package ie.gmit.ds.representations;
+package ie.gmit.ds;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -18,6 +18,8 @@ public class User {
 	private String hashedPassword;
 	@NotBlank @Length
 	private String salt;
+	@NotBlank @Length
+	private String password;
 	
 	public User() 
 	{
