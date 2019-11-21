@@ -1,4 +1,4 @@
 ie\gmit\ds\ApiConfig.class
-ie\gmit\ds\controller\UserRESTController.class
 ie\gmit\ds\dao\UserDB.class
-ie\gmit\ds\representations\User.class
+ie\gmit\ds\ApiResource.class
+ie\gmit\ds\User.class

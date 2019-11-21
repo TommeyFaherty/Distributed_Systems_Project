@@ -23,6 +23,10 @@ public class UserDB {
 		return users.get(id);
 	}
 	
+	public static void addNewUser(Integer id, User user) {
+		users.put(id, user);
+	}
+	
 	public static void updateUser(Integer id, User user) {
 		users.put(id, user);
 	}

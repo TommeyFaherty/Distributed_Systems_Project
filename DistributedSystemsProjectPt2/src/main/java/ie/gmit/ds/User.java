@@ -14,16 +14,28 @@ public class User {
 	private String name;
 	@Pattern(regexp=".+@.+\\.[a-z]+")
 	private String email;
-	@NotBlank @Length
 	private String hashedPassword;
-	@NotBlank @Length
 	private String salt;
-	@NotBlank @Length
 	private String password;
 	
 	public User() 
 	{
 		
+	}
+	
+	public User(int id, String name, String email, String password)
+	{
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.hashedPassword = "tempPass";
+		this.salt = "tempSalt";
+//		setHashedPassword("tempHash");
+//		setSalt("tempSalt");
+		
+		//Pass password to password hasher and return salt and hashed password
+		//User(id,name,email,hashedPassword,salt);
 	}
 	
 	public User(int id, String name, String email, String hashedPassword, String salt)
@@ -73,6 +85,14 @@ public class User {
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	
+//	public String getPassword() {
+//		return password;
+//	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	@Override

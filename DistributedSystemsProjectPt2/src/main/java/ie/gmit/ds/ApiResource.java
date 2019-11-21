@@ -27,18 +27,11 @@ import ie.gmit.ds.dao.UserDB;
 @Produces(MediaType.APPLICATION_JSON)
 public class ApiResource {
 	
-	//List<User> users = Arrays.asList(new User(1, "Hillary", "Hillaryous@gmail.com", "hashhhhh", "sfsfs654"));
-	
 	private final Validator validator;
 	
 	public ApiResource(Validator validator) {
 		this.validator = validator;
 	}
-	
-	//@GET
-	//public List<User> getUser() {
-	//	return users;
-	//}
 	
 	//Get list of users
 	@GET
@@ -70,11 +63,13 @@ public class ApiResource {
 			
 			return Response.status(Status.BAD_REQUEST).entity(validationMessages).build();
 		}
+		//Prevent existing user from being overwritten
 		if(u != null) {
-			UserDB.updateUser(user.getId(), user);
+			return Response.status(Status.CONFLICT).build();
+		}else {
+			UserDB.addNewUser(user.getId(), user);
 			return Response.created(new URI("/users/"+user.getId())).build();
-		}else
-			return Response.status(Status.NOT_FOUND).build();
+		}
 	}
 	
 	//Update details on specified user
@@ -91,7 +86,8 @@ public class ApiResource {
             }
 			return Response.status(Status.BAD_REQUEST).entity(validationMessages).build();
 		}
-		if(u != null) {
+		
+		if(u != null) {		
 			user.setId(id);
 			UserDB.updateUser(id, user);
 			return Response.ok(user).build();
